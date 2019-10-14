@@ -1,3 +1,23 @@
+# Fork's changes
+
+- Get the compressed CSV file in the `$DATAPATH` of your choice.
+- Unzip them with this directory's `unzip_csv.sh $DATAPATH`
+- Run `docker build -t mimic_scripts .`, which won't do much apart from copying the install script
+- Run the following. `$LOCAL_PG_DATA` is the directory where you'd want to store the postgres files (60Go). Expect the command to take a few hours.
+```
+ $ docker run \
+  --name mimiciii \
+  -p 5433:5432 \
+  -e BUILD_MIMIC=0 \
+  -e POSTGRES_PASSWORD=<> \
+  -e MIMIC_PASSWORD=<> \
+  -v $DATAPATH:/mimic_data \
+  -v $LOCAL_PG_DATA:/var/lib/postgresql/data \
+  -it mimic_scripts
+```
+
+
+
 # Building the MIMIC database with Docker
 
 A Docker file is provided that can be used to build a

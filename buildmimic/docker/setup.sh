@@ -53,7 +53,7 @@ echo "$0: running postgres_create_tables_pg10.sql"
 psql --username "$POSTGRES_USER" --dbname mimic < /docker-entrypoint-initdb.d/buildmimic/postgres/postgres_create_tables_pg10.sql
 else
 echo "$0: running postgres_create_tables_pg.sql"
-psql --username "$POSTGRES_USER" --dbname mimic < /docker-entrypoint-initdb.d/buildmimic/postgres/postgres_create_tables_pg.sql
+psql --username "$POSTGRES_USER" --dbname mimic < /docker-entrypoint-initdb.d/buildmimic/postgres/postgres_create_tables.sql
 fi
 
 if [ $COMPRESSED -eq 1 ]; then
